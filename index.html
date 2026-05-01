@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anurag Singh — Data & Analytics Professional</title>
+<meta name="description" content="Delhi-based Data Analyst at ZS Associates. Specialising in marketing analytics, ML model deployment, and automation. Open to full-time roles and freelance projects."/>
+<meta name="keywords" content="data analyst, analytics, python, SQL, machine learning, ZS associates, DTU, Delhi, freelance data analyst, marketing analytics"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Syne:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050508;
+  --bg2:#0B0B10;
+  --card:#0F1016;
+  --border:#1A1C24;
+  --border2:#252830;
+  --green:#00E5A0;
+  --green-dim:rgba(0,229,160,.12);
+  --green-glow:rgba(0,229,160,.06);
+  --text:#F0EDE8;
+  --muted:#5A5C68;
+  --mid:#9A9BA8;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Syne',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:10px;
+  --max:1100px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+a{color:inherit;text-decoration:none}
+
+/* ── NOISE OVERLAY ─────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+
+/* ── NAV ───────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:1.1rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,5,8,.8);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s;
+}
+.logo{font-family:var(--mono);font-size:.85rem;color:var(--text);letter-spacing:.06em}
+.logo span{color:var(--green)}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-btn{
+  background:transparent;border:1px solid var(--green);
+  color:var(--green);padding:.45rem 1.1rem;border-radius:5px;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;
+  cursor:pointer;transition:.2s;
+}
+.nav-btn:hover{background:var(--green);color:#000}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.ham span{display:block;width:22px;height:1px;background:var(--text);transition:.3s}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-nav{
+  display:none;position:fixed;top:60px;left:0;right:0;z-index:199;
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:1.5rem 2rem;flex-direction:column;gap:1.25rem;
+}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--mid);font-size:.9rem;letter-spacing:.06em}
+
+/* ── HERO ──────────────────────────────────── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:7rem 2.5rem 5rem;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 60% at 75% 50%,rgba(0,229,160,.055) 0%,transparent 70%);
+}
+.hero-inner{max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--mono);font-size:.72rem;color:var(--green);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.75rem;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--green)}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.2rem,6vw,5.8rem);font-weight:400;line-height:1.05;color:var(--text);margin-bottom:1.75rem}
+.hero-h1 em{font-style:italic;color:var(--green)}
+.hero-p{font-size:1.05rem;color:var(--mid);line-height:1.85;max-width:50ch;margin-bottom:2.5rem}
+.hero-p strong{color:var(--text);font-weight:500}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-g{
+  background:var(--green);color:#000;padding:.8rem 1.8rem;border-radius:6px;
+  font-family:var(--sans);font-size:.85rem;font-weight:500;letter-spacing:.04em;
+  transition:.2s;border:none;cursor:pointer;
+}
+.btn-g:hover{background:#1fffb3;transform:translateY(-2px)}
+.btn-o{
+  border:1px solid var(--border2);color:var(--text);
+  padding:.8rem 1.8rem;border-radius:6px;
+  font-family:var(--sans);font-size:.85rem;font-weight:400;
+  transition:.2s;background:transparent;
+}
+.btn-o:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.hero-cards{display:flex;flex-direction:column;gap:1rem}
+.hcard{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.5rem 1.75rem;position:relative;overflow:hidden;
+  transition:border-color .3s;
+}
+.hcard:hover{border-color:rgba(0,229,160,.3)}
+.hcard::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--green);opacity:.5}
+.hcard-num{
+  font-family:var(--serif);font-size:2.4rem;color:var(--green);
+  line-height:1;font-weight:400;margin-bottom:.3rem;
+}
+.hcard-lbl{font-size:.78rem;color:var(--muted);font-weight:400}
+
+/* ── SHARED ────────────────────────────────── */
+section{padding:6rem 2.5rem;position:relative;z-index:1}
+.inner{max-width:var(--max);margin:0 auto}
+.stag{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--mono);font-size:.7rem;color:var(--green);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;
+}
+.stag::before{content:'';width:20px;height:1px;background:var(--green)}
+.sh{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:400;line-height:1.2;color:var(--text);margin-bottom:1rem}
+.slead{font-size:1rem;color:var(--mid);max-width:58ch;line-height:1.8}
+.divider{width:100%;height:1px;background:var(--border);margin:0}
+
+/* ── ABOUT ─────────────────────────────────── */
+#about{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-g{display:grid;grid-template-columns:1.4fr 1fr;gap:5rem;align-items:start;margin-top:2.5rem}
+.about-body p{color:var(--mid);line-height:1.9;margin-bottom:1.25rem;font-size:1rem}
+.about-body p strong{color:var(--text);font-weight:500}
+.about-body blockquote{
+  border-left:2px solid var(--green);padding:1rem 1.5rem;
+  margin:2rem 0;font-family:var(--serif);font-size:1.15rem;
+  color:var(--text);font-style:italic;line-height:1.6;
+  background:var(--green-dim);border-radius:0 6px 6px 0;
+}
+.sidebar-info{display:flex;flex-direction:column;gap:1rem}
+.si-row{padding:.75rem 0;border-bottom:1px solid var(--border)}
+.si-row:first-child{border-top:1px solid var(--border)}
+.si-lbl{font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.35rem}
+.si-val{font-size:.9rem;color:var(--text);font-weight:400;line-height:1.55}
+.badge-green{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--green-dim);border:1px solid rgba(0,229,160,.22);
+  border-radius:20px;padding:.35rem .9rem;font-size:.75rem;
+  color:var(--green);font-family:var(--mono);margin-top:.5rem;
+}
+.badge-green::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── STATS ─────────────────────────────────── */
+#stats{padding:3.5rem 2.5rem;border-bottom:1px solid var(--border)}
+.stats-row{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
+  background:var(--border);gap:1px;
+}
+.sc{background:var(--card);padding:2rem 1.5rem;text-align:center}
+.sc-n{font-family:var(--serif);font-size:2.6rem;color:var(--green);font-weight:400;line-height:1;margin-bottom:.4rem}
+.sc-l{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.5}
+
+/* ── EDUCATION ─────────────────────────────── */
+#education{}
+.edu-grid{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem}
+.edu-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.75rem 2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;
+  transition:border-color .25s;
+}
+.edu-card:hover{border-color:rgba(0,229,160,.25)}
+.edu-deg{font-size:1.1rem;font-weight:500;color:var(--text);margin-bottom:.35rem}
+.edu-school{font-size:.9rem;color:var(--green);margin-bottom:.5rem}
+.edu-detail{font-size:.85rem;color:var(--muted)}
+.edu-year{
+  font-family:var(--mono);font-size:.8rem;color:var(--muted);
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:5px;padding:.35rem .8rem;white-space:nowrap;height:fit-content;
+}
+.edu-badge{
+  display:inline-block;background:var(--green-dim);border:1px solid rgba(0,229,160,.2);
+  border-radius:4px;padding:.2rem .6rem;font-family:var(--mono);
+  font-size:.72rem;color:var(--green);margin-top:.5rem;
+}
+
+/* ── EXPERIENCE ────────────────────────────── */
+#experience{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.exp-list{margin-top:2.5rem;display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.exp-item:first-child{border-top:1px solid var(--border)}
+.exp-meta{}
+.exp-period{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem}
+.exp-co{font-size:.85rem;color:var(--green);font-weight:500}
+.exp-loc{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.exp-title{font-size:1.15rem;font-weight:500;color:var(--text);margin-bottom:.75rem}
+.exp-section-lbl{
+  font-family:var(--mono);font-size:.65rem;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--green);margin:1.2rem 0 .5rem;opacity:.8;
+}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.exp-bullets li{font-size:.9rem;color:var(--mid);line-height:1.75;padding-left:1.2rem;position:relative}
+.exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--green)}
+.exp-bullets li strong{color:var(--text);font-weight:500}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.tag{
+  font-family:var(--mono);font-size:.67rem;letter-spacing:.05em;text-transform:uppercase;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  border-radius:4px;padding:.3rem .65rem;color:var(--muted);
+}
+
+/* ── PROJECTS ──────────────────────────────── */
+#projects{}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:2rem;display:flex;flex-direction:column;gap:1rem;
+  transition:border-color .25s,transform .25s;
+}
+.proj-card:hover{border-color:rgba(0,229,160,.3);transform:translateY(-3px)}
+.proj-num{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-bottom:.25rem}
+.proj-title{font-family:var(--serif);font-size:1.35rem;color:var(--text);font-weight:400;line-height:1.25}
+.proj-org{font-size:.8rem;color:var(--green);margin-bottom:.25rem}
+.proj-desc{font-size:.88rem;color:var(--mid);line-height:1.8;flex:1}
+.proj-desc li{margin-left:1rem;margin-bottom:.35rem}
+.proj-desc strong{color:var(--text);font-weight:500}
+.proj-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.proj-tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.proj-tool{
+  font-family:var(--mono);font-size:.65rem;
+  background:var(--green-dim);border:1px solid rgba(0,229,160,.18);
+  border-radius:3px;padding:.2rem .55rem;color:var(--green);
+}
+
+/* ── SKILLS ────────────────────────────────── */
+#skills{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.sg{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem}
+.sg-title{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:1.5rem}
+.sk-item{margin-bottom:1rem}
+.sk-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.sk-name{font-size:.85rem;color:var(--text);font-weight:400}
+.sk-level{font-family:var(--mono);font-size:.65rem;color:var(--muted)}
+.sk-bar{height:2px;background:var(--border2);border-radius:1px;overflow:hidden}
+.sk-fill{height:100%;background:var(--green);border-radius:1px;width:0;transition:width 1s ease}
+.sk-fill.in{width:var(--w)}
+.soft-list{display:flex;flex-wrap:wrap;gap:.6rem}
+.soft-tag{
+  font-size:.8rem;color:var(--mid);
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:5px;padding:.4rem .85rem;
+}
+
+/* ── ACHIEVEMENTS ──────────────────────────── */
+#achievements{}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
+.ach-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start;
+  transition:border-color .25s;
+}
+.ach-card:hover{border-color:rgba(0,229,160,.25)}
+.ach-icon{
+  width:42px;height:42px;flex-shrink:0;
+  background:var(--green-dim);border:1px solid rgba(0,229,160,.2);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.ach-title{font-size:.95rem;font-weight:500;color:var(--text);margin-bottom:.35rem;line-height:1.4}
+.ach-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+.ach-badge{
+  display:inline-block;margin-top:.5rem;
+  font-family:var(--mono);font-size:.65rem;
+  background:var(--green-dim);border:1px solid rgba(0,229,160,.2);
+  border-radius:3px;padding:.2rem .55rem;color:var(--green);
+}
+
+/* ── WORK WITH ME ──────────────────────────── */
+#work-with-me{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.wwm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;margin-bottom:3.5rem}
+.svc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.75rem;transition:border-color .25s;
+}
+.svc-card:hover{border-color:rgba(0,229,160,.3)}
+.svc-icon{
+  width:42px;height:42px;background:var(--green-dim);border:1px solid rgba(0,229,160,.2);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;margin-bottom:1.1rem;
+}
+.svc-title{font-size:.95rem;font-weight:500;color:var(--text);margin-bottom:.6rem}
+.svc-desc{font-size:.83rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.svc-helps{display:flex;flex-direction:column;gap:.4rem}
+.svc-helps p{font-size:.78rem;color:var(--muted);display:flex;gap:.5rem}
+.svc-helps p::before{content:'→';color:var(--green);flex-shrink:0}
+
+.process{margin-top:3rem}
+.proc-title{font-family:var(--serif);font-size:1.6rem;color:var(--text);margin-bottom:1.75rem}
+.proc-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
+}
+.proc-step{background:var(--bg);padding:1.75rem 1.5rem}
+.proc-n{font-family:var(--mono);font-size:.68rem;color:var(--green);margin-bottom:.75rem;letter-spacing:.08em}
+.proc-t{font-size:.9rem;font-weight:500;color:var(--text);margin-bottom:.4rem}
+.proc-d{font-size:.8rem;color:var(--muted);line-height:1.7}
+
+.pricing-note{
+  margin-top:2rem;border:1px solid rgba(0,229,160,.2);border-radius:var(--r);
+  padding:1.5rem 2rem;background:var(--green-dim);
+}
+.pricing-note p{font-size:.9rem;color:var(--mid)}
+.pricing-note p strong{color:var(--text)}
+
+/* ── CONTACT ───────────────────────────────── */
+#contact{}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3rem;align-items:start}
+.contact-left p{color:var(--mid);line-height:1.85;margin-bottom:1.25rem;font-size:.95rem}
+.contact-links{display:flex;flex-direction:column;gap:.85rem;margin-top:2rem}
+.clink{
+  display:flex;align-items:center;gap:1rem;
+  color:var(--mid);font-size:.9rem;transition:color .2s;
+}
+.clink:hover{color:var(--green)}
+.clink-icon{
+  width:38px;height:38px;flex-shrink:0;
+  background:var(--card);border:1px solid var(--border);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+}
+.cform{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem}
+.fl{display:block;font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem;margin-top:1.1rem}
+.fl:first-of-type{margin-top:0}
+.fi,.ft,.fsel{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  border-radius:7px;padding:.75rem 1rem;color:var(--text);
+  font-family:var(--sans);font-size:.88rem;font-weight:300;
+  outline:none;transition:border-color .2s;appearance:none;
+}
+.fi::placeholder,.ft::placeholder{color:var(--muted)}
+.fi:focus,.ft:focus,.fsel:focus{border-color:var(--green)}
+.ft{resize:vertical;min-height:95px}
+.fsel option{background:var(--card)}
+.fsub{
+  width:100%;margin-top:1.25rem;background:var(--green);color:#000;
+  border:none;border-radius:7px;padding:.85rem;
+  font-family:var(--sans);font-size:.88rem;font-weight:500;cursor:pointer;transition:.2s;
+}
+.fsub:hover{background:#1fffb3}
+.fsuccess{display:none;text-align:center;padding:2.5rem 1rem;font-family:var(--serif);font-size:1.2rem;color:var(--green)}
+
+/* ── FOOTER ────────────────────────────────── */
+footer{
+  border-top:1px solid var(--border);padding:2rem 2.5rem;
+}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fc{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.flinks{display:flex;gap:1.75rem}
+.flinks a{font-family:var(--mono);font-size:.72rem;color:var(--muted);transition:color .2s}
+.flinks a:hover{color:var(--green)}
+
+/* ── REVEAL ────────────────────────────────── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.r.v{opacity:1;transform:none}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-cards{flex-direction:row;flex-wrap:wrap}
+  .hcard{flex:1;min-width:160px}
+  .about-g{grid-template-columns:1fr;gap:2rem}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:1fr}
+  .ach-grid{grid-template-columns:1fr}
+  .wwm-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .proc-steps{grid-template-columns:repeat(2,1fr)}
+  .exp-item{grid-template-columns:1fr;gap:.75rem}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .ham{display:flex}
+}
+@media(max-width:600px){
+  section{padding:4rem 1.25rem}
+  #stats{padding:2.5rem 1.25rem}
+  nav{padding:.9rem 1.25rem}
+  .hero-inner{padding:0}
+  #hero{padding:6rem 1.25rem 4rem}
+  .skills-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">anurag<span>.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work-with-me">Services</a></li>
+    <li><a href="#contact" class="nav-btn">Hire Me</a></li>
+  </ul>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <a href="#about">About</a><a href="#education">Education</a>
+  <a href="#experience">Experience</a><a href="#projects">Projects</a>
+  <a href="#skills">Skills</a><a href="#work-with-me">Services</a>
+  <a href="#contact">Hire Me</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Delhi, India · Open to Opportunities</div>
+      <h1 class="hero-h1">Anurag<br/><em>Singh.</em></h1>
+      <p class="hero-p">
+        Data without a story is just noise. I'm a <strong>Decision Analytics professional</strong>
+        at ZS Associates — specialising in marketing analytics, ML model deployment, and
+        Python automation. I make data <strong>work harder for the teams I work with.</strong>
+      </p>
+      <div class="hero-btns">
+        <a href="#experience" class="btn-g">View My Work</a>
+        <a href="#work-with-me" class="btn-o">Work With Me</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hcard">
+        <div class="hcard-num" data-count="960" data-prefix="$" data-suffix="K+">$0</div>
+        <div class="hcard-lbl">Revenue impact quantified across campaigns</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num" data-count="7" data-suffix="× Faster">0</div>
+        <div class="hcard-lbl">Reporting turnaround via Python automation</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num" data-count="92" data-suffix="%">0</div>
+        <div class="hcard-lbl">Reduction in lead assignment time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="about-g">
+      <div class="about-body r">
+        <div class="stag">About Me</div>
+        <h2 class="sh">I turn data into decisions — not just dashboards.</h2>
+        <p>I'm Anurag, a Delhi-based analytics professional with a background in Mechanical Engineering (with a Minor in CS) from Delhi Technological University. Currently working as a <strong>Decision Analytics Associate at ZS Associates</strong>, I work at the intersection of data science and business strategy.</p>
+        <p>In under a year, I've led <strong>revenue attribution analyses worth $960K+</strong>, designed test-and-control experiments for pharma clients, contributed to deploying a production ML model, and cut reporting cycles from a week to a single day. I don't just produce outputs — I build systems that make insight faster, more reliable, and client-ready.</p>
+        <blockquote>"My goal with every project is the same: make it so clear that anyone in the room can make a better decision because of what's on the slide."</blockquote>
+        <p>I'm currently looking for <strong>full-time opportunities</strong> in analytics, data science, or consulting — and simultaneously open to <strong>freelance projects</strong> where I can bring measurable value quickly.</p>
+      </div>
+      <div class="sidebar-info r d2">
+        <div class="si-row"><div class="si-lbl">Based in</div><div class="si-val">Delhi, India</div></div>
+        <div class="si-row"><div class="si-lbl">Current Role</div><div class="si-val">Decision Analytics Associate<br/>ZS Associates, Gurugram</div></div>
+        <div class="si-row"><div class="si-lbl">Education</div><div class="si-val">B.Tech, DTU — CGPA 8.07</div></div>
+        <div class="si-row"><div class="si-lbl">Specialisation</div><div class="si-val">Marketing Analytics · ML · Automation</div></div>
+        <div class="si-row"><div class="si-lbl">Core Stack</div><div class="si-val">Python · SQL · Databricks · AWS</div></div>
+        <div class="si-row"><div class="si-lbl">Email</div><div class="si-val">singh.anurag04122@gmail.com</div></div>
+        <div class="si-row"><div class="si-lbl">Status</div><div class="badge-green">Open to Roles & Projects</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section id="stats">
+  <div class="stats-row r">
+    <div class="sc"><div class="sc-n" data-count="960" data-prefix="$" data-suffix="K+">$0</div><div class="sc-l">Revenue Attributed</div></div>
+    <div class="sc"><div class="sc-n" data-count="7" data-suffix="×">0</div><div class="sc-l">Faster Reporting</div></div>
+    <div class="sc"><div class="sc-n" data-count="92" data-suffix="%">0</div><div class="sc-l">Lead Time Reduced</div></div>
+    <div class="sc"><div class="sc-n" data-count="1" data-suffix="st">0</div><div class="sc-l">Analytics Bootcamp Rank</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="inner">
+    <div class="stag r">Education</div>
+    <h2 class="sh r">Academic foundation.</h2>
+    <div class="edu-grid">
+      <div class="edu-card r">
+        <div>
+          <div class="edu-deg">B.Tech — Mechanical Engineering <span style="color:var(--muted);font-weight:300">(Minor: Computer Science)</span></div>
+          <div class="edu-school">Delhi Technological University, New Delhi</div>
+          <div class="edu-detail">Strong blend of engineering rigour and computer science fundamentals — covering data structures, algorithms, databases, and software systems alongside core engineering disciplines.</div>
+          <div class="edu-badge">CGPA: 8.07 / 10</div>
+        </div>
+        <div class="edu-year">2021 – 2025</div>
+      </div>
+      <div class="edu-card r d1">
+        <div>
+          <div class="edu-deg">Class XII — CBSE</div>
+          <div class="edu-school">Navyug School, New Delhi</div>
+          <div class="edu-detail">Science stream with strong performance across Physics, Chemistry, Mathematics, and Computer Science.</div>
+          <div class="edu-badge">92.4%</div>
+        </div>
+        <div class="edu-year">2020</div>
+      </div>
+      <div class="edu-card r d2">
+        <div>
+          <div class="edu-deg">Class X — CBSE</div>
+          <div class="edu-school">Navyug School, New Delhi</div>
+          <div class="edu-badge">79.8%</div>
+        </div>
+        <div class="edu-year">2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <div class="stag r">Experience</div>
+    <h2 class="sh r">Where I've done the work.</h2>
+    <div class="exp-list">
+
+      <!-- ZS -->
+      <div class="exp-item r">
+        <div class="exp-meta">
+          <div class="exp-period">Jan 2025 – Present</div>
+          <div class="exp-co">ZS Associates</div>
+          <div class="exp-loc">Gurugram, India</div>
+        </div>
+        <div>
+          <div class="exp-title">Decision Analytics Associate</div>
+          <div class="exp-section-lbl">Impact Measurement & Test-Control Analytics</div>
+          <ul class="exp-bullets">
+            <li>Led programmatic display impact analyses across two brands — quantifying <strong>$660K revenue impact over 20 weeks</strong> for one brand and <strong>$300K over 11 weeks</strong> for another — through segment- and asset-level decomposition of engagement rate and revenue lift.</li>
+            <li>Led Holiday Test & Control Analysis using <strong>stratified splits</strong> to compare HCP engagement across promotional pause (test) and continuation (control) groups; findings showed digital channel engagement remained stable during pauses, giving the client a data-backed case to reduce spend without sacrificing engagement.</li>
+            <li>Led Q4'25 impact assessment across all CE.AI brands under tight deadlines, maintaining <strong>zero-error QC standards</strong> throughout delivery.</li>
+          </ul>
+          <div class="exp-section-lbl">Model Development & Deployment</div>
+          <ul class="exp-bullets">
+            <li>Contributed to end-to-end training of a <strong>CNN-based Omnichannel NBA sequence model</strong> — built per-HCP promotion sequences incorporating channel, content, time-gap, and demographic features; model outputs integrated into a genetic algorithm to generate optimized weekly promotional schedules, successfully deployed to production.</li>
+            <li>Performed EDA on promotional datasets to identify distributional patterns, assess feature quality, and prepare clean model inputs; documented feature selection rationale in a <strong>Business Rule Document (BRD)</strong> for client-side interpretability.</li>
+            <li>Developed a data assessment deck highlighting risks around interaction data completeness, enabling <strong>proactive mitigation</strong> before model retraining cycles.</li>
+          </ul>
+          <div class="exp-section-lbl">Reporting & Process Automation</div>
+          <ul class="exp-bullets">
+            <li>Standardised brand scorecard codebase in Python, reducing reporting turnaround from <strong>one week to under one day</strong> across all brands; embedded inline documentation for team-wide usability and client review accuracy.</li>
+            <li>Coordinated with engineering and product teams post-deployment to manage the bug reporting lifecycle and prioritise fixes within sprint cycles.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Databricks</span>
+            <span class="tag">AWS SageMaker</span><span class="tag">CNN</span><span class="tag">Test & Control</span>
+            <span class="tag">EDA</span><span class="tag">Revenue Attribution</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collegedunia -->
+      <div class="exp-item r d1">
+        <div class="exp-meta">
+          <div class="exp-period">May – Jul 2024</div>
+          <div class="exp-co">Collegedunia</div>
+          <div class="exp-loc">Gurugram, India</div>
+        </div>
+        <div>
+          <div class="exp-title">Project Management Intern</div>
+          <ul class="exp-bullets">
+            <li>Developed an initial calling (IC) tracker dashboard to monitor KPIs and communicate insights to stakeholders, contributing to a sustained <strong>minimum 8% monthly conversion rate</strong> for the IC team.</li>
+            <li>Automated <strong>10+ manual processes</strong> using Google Apps Script, reducing lead assignment time by over <strong>92%</strong> and eliminating redundant data to improve accuracy and efficiency.</li>
+            <li>Analysed state-wise study costs for Indian students across USA, UK, Australia, and Canada, generating insights that informed strategy for a new business segment.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag">Google Apps Script</span><span class="tag">Excel</span>
+            <span class="tag">KPI Dashboards</span><span class="tag">Process Automation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="stag r">Projects</div>
+    <h2 class="sh r">Things I built and solved.</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card r">
+        <div>
+          <div class="proj-num">Project 01</div>
+          <div class="proj-title">Shahnaz Husain Group — Brand & Competitive Strategy</div>
+          <div class="proj-org">Consulting Project · Leading Herbal Beauty Brand</div>
+        </div>
+        <div class="proj-desc">
+          <ul>
+            <li>Assessed <strong>7 competitors across 6 KPIs</strong>, providing stakeholders with a weighted scoring system to identify strategic improvements.</li>
+            <li>Identified <strong>5 inconsistencies</strong> in packaging and brand identity, streamlining visual cohesion with redesign recommendations.</li>
+            <li>Recommended social media strategies by assessing <strong>25+ influencers across 9 metrics</strong> and formulating tailored content plans.</li>
+          </ul>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-tools">
+            <span class="proj-tool">Market Research</span>
+            <span class="proj-tool">Competitive Analysis</span>
+            <span class="proj-tool">Brand Strategy</span>
+            <span class="proj-tool">Excel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card r d1">
+        <div>
+          <div class="proj-num">Project 02</div>
+          <div class="proj-title">Digital Music Store Analysis</div>
+          <div class="proj-org">Personal Project · SQL & Excel</div>
+        </div>
+        <div class="proj-desc">
+          <ul>
+            <li>Reduced CSV file size by <strong>15%</strong> and eliminated redundant data using Excel, improving readability and analytical precision.</li>
+            <li>Implemented <strong>SQL queries</strong> to analyse performance metrics and customer behaviour, generating insights to optimise marketing strategies for a simulated digital music store.</li>
+          </ul>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-tools">
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">Excel</span>
+            <span class="proj-tool">Data Cleaning</span>
+            <span class="proj-tool">Customer Analytics</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="stag r">Skills</div>
+    <h2 class="sh r">The toolkit behind the results.</h2>
+    <div class="skills-grid">
+      <div class="sg r">
+        <div class="sg-title">Programming & Tools</div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Python (Pandas, NumPy, Sklearn)</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">SQL</span><span class="sk-level">Proficient</span></div><div class="sk-bar"><div class="sk-fill" style="--w:78%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Excel / Google Sheets</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Databricks</span><span class="sk-level">Working</span></div><div class="sk-bar"><div class="sk-fill" style="--w:65%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">AWS (S3, SageMaker)</span><span class="sk-level">Working</span></div><div class="sk-bar"><div class="sk-fill" style="--w:60%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Google Apps Script</span><span class="sk-level">Proficient</span></div><div class="sk-bar"><div class="sk-fill" style="--w:70%"></div></div></div>
+      </div>
+      <div class="sg r d1">
+        <div class="sg-title">Analytics & Data Science</div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Exploratory Data Analysis</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Test & Control Design</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Feature Engineering</span><span class="sk-level">Proficient</span></div><div class="sk-bar"><div class="sk-fill" style="--w:75%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">ML Model Training & Eval</span><span class="sk-level">Proficient</span></div><div class="sk-bar"><div class="sk-fill" style="--w:72%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Revenue Attribution</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Business Insight Generation</span><span class="sk-level">Advanced</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
+      </div>
+      <div class="sg r d2">
+        <div class="sg-title">Soft Skills & Domain</div>
+        <div style="margin-bottom:1rem"><div class="sk-row"><span class="sk-name">Stakeholder Communication</span><span class="sk-level">Strong</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
+        <div class="soft-list" style="margin-top:.5rem">
+          <span class="soft-tag">Project Management</span>
+          <span class="soft-tag">Client Engagement</span>
+          <span class="soft-tag">Cross-functional Collaboration</span>
+          <span class="soft-tag">Pharma / HCP Analytics</span>
+          <span class="soft-tag">Marketing Analytics</span>
+          <span class="soft-tag">Process Automation</span>
+          <span class="soft-tag">Documentation</span>
+          <span class="soft-tag">QC Standards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="inner">
+    <div class="stag r">Achievements</div>
+    <h2 class="sh r">Recognition along the way.</h2>
+    <div class="ach-grid">
+      <div class="ach-card r">
+        <div class="ach-icon">🏆</div>
+        <div>
+          <div class="ach-title">DCE Spotlight Award — ZS Associates</div>
+          <div class="ach-desc">Awarded for outstanding contributions to the Digital Customer Experience (CE.AI) practice — recognising delivery quality, impact, and cross-team collaboration.</div>
+          <div class="ach-badge">ZS Associates · 2025</div>
+        </div>
+      </div>
+      <div class="ach-card r d1">
+        <div class="ach-icon">🥇</div>
+        <div>
+          <div class="ach-title">Ranked 1st — Decision Analytics Bootcamp</div>
+          <div class="ach-desc">Ranked first out of the entire incoming intern batch in ZS Associates' internal Decision Analytics Bootcamp — a rigorous evaluation of analytical skills and business acumen.</div>
+          <div class="ach-badge">ZS Associates · 2024</div>
+        </div>
+      </div>
+      <div class="ach-card r d1">
+        <div class="ach-icon">🎯</div>
+        <div>
+          <div class="ach-title">1st Place — Pixel Pitch</div>
+          <div class="ach-desc">Won first place at Pixel Pitch, an inter-college marketing case study competition organised by Sunflower Seeds, competing against teams across multiple colleges.</div>
+          <div class="ach-badge">Inter-college · Marketing Strategy</div>
+        </div>
+      </div>
+      <div class="ach-card r d2">
+        <div class="ach-icon">🥉</div>
+        <div>
+          <div class="ach-title">3rd Place — Innovate EdTech</div>
+          <div class="ach-desc">Secured third place at Innovate EdTech, an inter-college case study competition organised by 180DC MUJ, focused on EdTech innovation and business problem-solving.</div>
+          <div class="ach-badge">Inter-college · EdTech · 180DC MUJ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK WITH ME -->
+<section id="work-with-me">
+  <div class="inner">
+    <div class="stag r">Work With Me</div>
+    <h2 class="sh r">Let's make your data actually useful.</h2>
+    <p class="slead r" style="margin-bottom:0">I work with startups, consultancies, and marketing teams who have data but aren't getting the decisions they need from it. Here's how I can help.</p>
+    <div class="wwm-grid">
+      <div class="svc-card r">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">Marketing Analytics & Attribution</div>
+        <div class="svc-desc">Understand which campaigns, channels, and assets are actually driving revenue — not just clicks. Clean attribution models tailored to your business.</div>
+        <div class="svc-helps">
+          <p>You're spending on ads but can't prove ROI</p>
+          <p>Your channel data lives in silos</p>
+          <p>Leadership wants a number — you don't have one</p>
+        </div>
+      </div>
+      <div class="svc-card r d1">
+        <div class="svc-icon">🧪</div>
+        <div class="svc-title">Test & Control Experiment Design</div>
+        <div class="svc-desc">Design and analyse A/B or holdout experiments that give you statistically defensible answers — not just directional gut checks.</div>
+        <div class="svc-helps">
+          <p>You want to know if a strategy works — for real</p>
+          <p>You need to justify pausing or scaling a campaign</p>
+          <p>Your experiments lack a proper control group</p>
+        </div>
+      </div>
+      <div class="svc-card r d2">
+        <div class="svc-icon">⚙️</div>
+        <div class="svc-title">Reporting Automation in Python</div>
+        <div class="svc-desc">Turn your weekly manual reporting grind into a one-click process. Clean, documented Python scripts your whole team can run and trust.</div>
+        <div class="svc-helps">
+          <p>Your team spends days compiling reports by hand</p>
+          <p>Reports are inconsistent across team members</p>
+          <p>You can't confidently explain outputs to clients</p>
+        </div>
+      </div>
+      <div class="svc-card r">
+        <div class="svc-icon">📋</div>
+        <div class="svc-title">KPI Dashboards & Scorecards</div>
+        <div class="svc-desc">Executive-ready scorecards and dashboards that tell a story at a glance — in Excel, Google Sheets, or a lightweight web view.</div>
+        <div class="svc-helps">
+          <p>Your current dashboards are messy or ignored</p>
+          <p>No single source of truth for KPIs</p>
+          <p>Leadership doesn't engage with current reports</p>
+        </div>
+      </div>
+      <div class="svc-card r d1">
+        <div class="svc-icon">🔍</div>
+        <div class="svc-title">Ad-hoc Analysis & Data Deep Dives</div>
+        <div class="svc-desc">Need a rigorous answer to a specific business question? I'll clean your data, run the right analysis, and deliver clear findings — fast.</div>
+        <div class="svc-helps">
+          <p>A client or exec asked a question no one can answer</p>
+          <p>You have raw data but no time to analyse it</p>
+          <p>You need a clean breakdown in 48–72 hours</p>
+        </div>
+      </div>
+      <div class="svc-card r d2">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-title">ML Model Support & EDA</div>
+        <div class="svc-desc">Feature engineering, EDA, model evaluation, and documentation — so your ML project doesn't stall at the "clean data" or "explain outputs" stage.</div>
+        <div class="svc-helps">
+          <p>Your model is built but no one can explain it</p>
+          <p>Your data needs cleaning before modelling</p>
+          <p>You need a BRD or client-facing model summary</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process r">
+      <div class="proc-title">How it works</div>
+      <div class="proc-steps">
+        <div class="proc-step"><div class="proc-n">01 / Discovery</div><div class="proc-t">30-min Call</div><div class="proc-d">We talk through your data problem, goal, and timeline — no commitment required.</div></div>
+        <div class="proc-step"><div class="proc-n">02 / Scoping</div><div class="proc-t">Proposal & Pricing</div><div class="proc-d">Clear deliverable, timeline, and flat-rate price. No ambiguity, no surprises.</div></div>
+        <div class="proc-step"><div class="proc-n">03 / Execution</div><div class="proc-t">Analysis & Build</div><div class="proc-d">I do the work. Check-ins at agreed milestones. Async-friendly.</div></div>
+        <div class="proc-step"><div class="proc-n">04 / Delivery</div><div class="proc-t">Handoff & Walkthrough</div><div class="proc-d">Clean files, documented code, and a walkthrough so you're never dependent on me.</div></div>
+      </div>
+    </div>
+
+    <div class="pricing-note r">
+      <p><strong>How I price:</strong> Flat project rates — you always know the cost before we start. Most engagements range from a focused 2-day deep dive to a 3-week project. Retainer arrangements available for ongoing analytical support. <strong>Let's talk — no obligation.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="stag r">Contact</div>
+    <h2 class="sh r">Let's start a conversation.</h2>
+    <div class="contact-grid">
+      <div class="r">
+        <p>Whether you have a clear project in mind, a job opportunity, or you're just figuring out what you need — reach out. I'm happy to talk through your data problem before we decide if working together makes sense.</p>
+        <p>I respond within 24 hours and am available for calls across IST business hours with some overlap into EU/US timezones.</p>
+        <div class="contact-links">
+          <a href="mailto:singh.anurag04122@gmail.com" class="clink">
+            <div class="clink-icon">✉</div>singh.anurag04122@gmail.com
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="clink">
+            <div class="clink-icon">in</div>linkedin.com/in/anuragsingh
+          </a>
+          <a href="tel:+917982646818" class="clink">
+            <div class="clink-icon">☎</div>+91 79826 46818
+          </a>
+        </div>
+      </div>
+      <div class="cform r d1">
+        <div id="cform-inner">
+          <label class="fl">Your Name</label>
+          <input type="text" class="fi" placeholder="Alex Johnson" id="fn"/>
+          <label class="fl">Email</label>
+          <input type="email" class="fi" placeholder="alex@company.com" id="fe"/>
+          <label class="fl">I'm reaching out about…</label>
+          <select class="fsel" id="fs">
+            <option value="" disabled selected>Select…</option>
+            <option>Full-time Opportunity</option>
+            <option>Freelance Project</option>
+            <option>Marketing Analytics & Attribution</option>
+            <option>Reporting Automation</option>
+            <option>Test & Control Design</option>
+            <option>KPI Dashboard Build</option>
+            <option>Something else</option>
+          </select>
+          <label class="fl">Message</label>
+          <textarea class="ft" placeholder="Tell me about your project or opportunity…" id="fm"></textarea>
+          <button class="fsub" onclick="submitForm()">Send Message →</button>
+        </div>
+        <div class="fsuccess" id="fsuccess">
+          Message received.<br/>I'll be in touch within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="fc">© 2025 Anurag Singh · Delhi, India · Built with purpose.</div>
+    <div class="flinks">
+      <a href="mailto:singh.anurag04122@gmail.com">Email</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="#hero">↑ Top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+const ham=document.getElementById('ham'),mnav=document.getElementById('mnav');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mnav.classList.toggle('open')});
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mnav.classList.remove('open')}));
+
+// Scroll reveal
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target)}})
+},{threshold:0.1});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+// Counter animation
+function animCount(el){
+  const target=parseInt(el.dataset.count),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  let start=0;
+  const dur=1600;
+  const step=ts=>{
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=pre+Math.round(e*target)+suf;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){animCount(e.target);co.unobserve(e.target)}})
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+// Skill bars
+const bo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-fill').forEach(b=>b.classList.add('in'));
+      bo.unobserve(e.target);
+    }
+  })
+},{threshold:0.3});
+document.querySelectorAll('.sg').forEach(g=>bo.observe(g));
+
+// Form
+function submitForm(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  if(!n||!e){alert('Please fill in your name and email.');return}
+  document.getElementById('cform-inner').style.display='none';
+  document.getElementById('fsuccess').style.display='block';
+}
+</script>
+</body>
+</html>
